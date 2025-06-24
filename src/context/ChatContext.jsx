@@ -41,6 +41,7 @@ export const ChatProvider = ({ children }) => {
   const createChat = (chatName) => {
     const newChat = { id: Date.now().toString(), name: chatName };
     setChats((prev) => [...prev, newChat]);
+    selectChat(newChat.id);
   };
 
   const deleteChat = (chatId) => {
