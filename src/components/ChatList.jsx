@@ -42,10 +42,14 @@ export default function ChatList() {
             className={`flex justify-between items-center p-2 mb-2 rounded cursor-pointer hover:bg-blue-100 ${
               selectedChatId === chat.id ? "bg-blue-300" : "bg-white"
             }`}
+            onClick={() => selectChat(chat.id)}
           >
-            <span onClick={() => selectChat(chat.id)}>{chat.name}</span>
+            <span>{chat.name}</span>
             <button
-              onClick={() => deleteChat(chat.id)}
+              onClick={(e) => {
+                e.stopPropagation();
+                deleteChat(chat.id);
+              }}
               className="text-red-500"
             >
               ❌
